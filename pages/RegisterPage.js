@@ -13,6 +13,7 @@ export class RegisterPage
     this.privacyPolicyBtn=page.locator('input[name="agree"]');
     this.continueBtn=page.getByRole('button',{name:'Continue'});
     this.successfullMessage=page.getByRole('heading',{name:'Your Account Has Been Created!'});
+    this.firstnameerrormessage=page.locator('div[class=text-danger]');
  }
 
 async enterFirstName(fname)
@@ -55,8 +56,21 @@ async isAccountCreated()
 {
     return await this.successfullMessage.isVisible();
 }
+errorfirstnameMessage()
+{
+    return this.firstnameerrormessage
+}
 
+async registrationform(fname,lname,Email,Tnumber,passNumber)
+{
+  await this.firstNameInput.fill(fname);
+  await this.lastNameInput.fill(lname);
+  await this.emailInput.fill(Email);
+  await this.telephoneInput.fill(Tnumber);
+  await this.passWordInput.fill(passNumber);
+  await this.passWordConfirm.fill(passNumber);
 
+}
 
 
 

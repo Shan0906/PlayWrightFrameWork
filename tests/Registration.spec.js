@@ -9,7 +9,7 @@ test.beforeEach(async({page,homePage})=>
       await homePage.clickOnRegister();
     });
 
-test("Registration test case",async({page,registerPage})=>
+test.skip("Registration test case",async({page,registerPage})=>
     {  // this is random data
         const firstNameRandomData=RandomDataGenrator.getrandomfirstname();
         const lastNameRandomData=RandomDataGenrator.getrandomlastname();
@@ -18,13 +18,7 @@ test("Registration test case",async({page,registerPage})=>
         const PassRandomData=RandomDataGenrator.getrandomPassword();
 
         //this is test case
-
-        await registerPage.enterFirstName(firstNameRandomData);
-        await registerPage.enterLastName(lastNameRandomData);
-        await registerPage.enterEmail(emailGerrateRandomData);
-        await registerPage.enterTellphone(phoneRandomData);
-        await registerPage.enterPass(PassRandomData);
-        await registerPage.enterConfirmPass(PassRandomData);
+       await registerPage.registrationform(firstNameRandomData,lastNameRandomData,emailGerrateRandomData,phoneRandomData,PassRandomData);
         await registerPage.clickonsubScribeBtn();
         await registerPage.clickOnprivacyPolicyBtn();
         await registerPage.clickOncontinueBtn();
@@ -32,4 +26,20 @@ test("Registration test case",async({page,registerPage})=>
         await expect(await registerPage.isAccountCreated()).toBe(true);
         
         
-     });
+     })
+     test.only("Registartion without firstname",async({page,registerPage})=>
+        {
+        const lastNameRandomData=RandomDataGenrator.getrandomlastname();
+        const emailGerrateRandomData=RandomDataGenrator.getrandomEmail();
+        const phoneRandomData=RandomDataGenrator.getrandomPhone();
+        const PassRandomData=RandomDataGenrator.getrandomPassword();
+        await registerPage.registrationform("",lastNameRandomData,emailGerrateRandomData,phoneRandomData,PassRandomData);
+        await registerPage.clickonsubScribeBtn();
+        await registerPage.clickOnprivacyPolicyBtn();
+        await registerPage.clickOncontinueBtn();
+        await expect(page).toHaveURL(/route=account\/register/);
+        await expect(registerPage.errorfirstnameMessage()).toHaveText('First Name must be between 1 and 32 characters!');
+
+        })
+     
+     ;
