@@ -14,12 +14,10 @@ static getrandomEmail()
     return `shantanu.${Date.now()}@example.com`
 }
 static getrandomPhone()
-{
-    return faker.phone.getrandomPhone();
-}
+ { 
+    return faker.string.numeric(10); 
+ }
 static getrandomPassword()
-{
-    return faker.person.getrandomPassword();
-
-}
+ { return `Test@${faker.string.alphanumeric(8)}1`; 
+  }
 }

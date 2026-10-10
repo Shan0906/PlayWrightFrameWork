@@ -12,6 +12,7 @@ export class RegisterPage
     this.subScribeBtn=page.getByRole('radio',{name:'Yes'});
     this.privacyPolicyBtn=page.locator('input[name="agree"]');
     this.continueBtn=page.getByRole('button',{name:'Continue'});
+    this.successfullMessage=page.getByRole('heading',{name:'Your Account Has Been Created!'});
  }
 
 async enterFirstName(fname)
@@ -49,6 +50,10 @@ async clickOncontinueBtn()
 async clickonsubScribeBtn()
 {
     await this.subScribeBtn.check();
+}
+async isAccountCreated()
+{
+    return await this.successfullMessage.isVisible();
 }
 
 
