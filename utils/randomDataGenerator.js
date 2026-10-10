@@ -11,7 +11,7 @@ static getrandomlastname()
 }
 static getrandomEmail()
 {
-    return faker.internet.email();
+    return `shantanu.${Date.now()}@example.com`
 }
 static getrandomPhone()
 {
