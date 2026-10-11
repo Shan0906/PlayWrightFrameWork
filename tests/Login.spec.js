@@ -4,7 +4,7 @@ import { dataProvider } from "../utils/dataProvider";
 
 
 
-const loginData=dataProvider.getdatadfromjson('../testdata/logindata.json');
+const loginData=dataProvider.getdatadfromjson('F:/IndustryLevel/testdata/logindata.json');
 
 test.beforeEach(async({page,homePage})=>
 { 

@@ -9,6 +9,7 @@ constructor(page)
     this.lnkLogin= page.getByText('Login',{exact:true});
     this.searchBox=page.getByPlaceholder('Search');
     this.searchBtn=page.locator("//span/button[contains(@type,'button')]");
+    this.productCount=page.locator(".product-thumb");
 }
 
 async isHomePageExist()
@@ -40,9 +41,18 @@ async searchProduct(productName)
 async clickOnSearch()
 {
     await this.searchBtn.click();
+    
 }
 
+getProduct(productName)
+{
+    return this.page.getByText(productName,{exact:true}).first();
+}
 
+async countassertionOfProduct()
+{
+    return await this.productCount.count();
+}
 
 
 
