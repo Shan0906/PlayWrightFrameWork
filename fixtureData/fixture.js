@@ -4,6 +4,7 @@ import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { dataProvider } from "../utils/dataProvider";
 import { TestConfig } from "../test.config";
+import { ShoppingCart } from "../pages/ShoppingCart";
 
 const testconfigFixture=new TestConfig();
 const logindataFixture=dataProvider.getdatadfromjson("F:/IndustryLevel/testdata/logindata.json");
@@ -34,6 +35,10 @@ export const test= base.extend(
             await use();
            await homePage.clickOnMyAccount();
            await homePage.clickonlogout();
+        },
+     shoppingCart:async({page},use)=>
+        {
+            await use(new ShoppingCart(page));
         }
 
 
